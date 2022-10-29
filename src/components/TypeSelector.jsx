@@ -5,6 +5,7 @@ import dvosklo from "../img/dvosklo.png"
 import trysklo from "../img/trysklo.png"
 import { Button, Card, Container, Image } from "react-bootstrap"
 import { useState } from "react"
+import style from'../css/TypeSelector.module.css';
 
 const windowTypes = [
     {
@@ -35,13 +36,13 @@ export function TypeSelector(){
         <Container>
             <Container className="row row-cols-auto">
                 {windowTypes.map(({name, img}, index) => 
-                    <Card className="col m-4 p-4">
-                        <Button 
+                    <Card className={style.card + " col m-4"}>
+                        <Button className={style.button}
                             variant={checked === index ? "primary": "secondary"}
                             onClick={() => {setChecked(index)}}
                         >{name}
                         </Button>
-                        <Image className="m-2" src={img} alt="window type" width="150"/>
+                        <Image src={img} alt="window type" height="200"/>
                     </Card>
                 )}
                 

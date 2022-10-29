@@ -1,0 +1,8 @@
+.tabs{
+    
+}
+
+.tab{
+    flex-grow: 1;
+    background-color: palevioletred;
+}

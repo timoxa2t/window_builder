@@ -1,12 +1,13 @@
 import { Builder } from "./Builder";
-
+import style from'../css/Body.module.css';
 
 
 
 export function Body(){
 
     return (
-        <Builder/>
-        
+        <div className={style.body}> 
+            <Builder/>
+        </div>   
     )
 }
