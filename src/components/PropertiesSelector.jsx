@@ -22,7 +22,7 @@ const details = {
 
 export function PropertiesSelector(){
     return (
-        <Container className="row">
+        <Container className={style.container + " row"}>
             <Container className={style.visual_side + " col-6"} >
                 <Image src={flare}/>
             </Container>
