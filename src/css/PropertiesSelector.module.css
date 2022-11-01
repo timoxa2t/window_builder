@@ -1,9 +1,52 @@
 
+ul{
+    list-style: none;
+    padding: 0;
+}
+
 .visual_side{
     height: 100%;
+    text-align: left;
     background: linear-gradient(130.81deg, #78BBF9 8.2%, #D1E8FD 97.71%);
 }
 
 .container{
-    flex-grow: 1;
+    height: 100%;
+}
+
+.flare{
+    position: absolute;
+}
+
+.component_list{
+    width: fit-content;
+    height: 300px;
+    margin: auto;
+    margin-top: 200px;
+}
+
+.component{
+    position: relative;
+    width: 30px;
+    display: inline-block;
+}
+
+.component_img{
+    height: 270px;
+    position: relative;
+    right: 10px;
+}
+
+.component__active{
+    width: 150px;
+}
+
+.component:hover{
+    width: 150px;
+}
+
+.component:hover .component_img,
+.component__active .component_img{
+    height: 300px;
+    margin-left: 50px;
 }

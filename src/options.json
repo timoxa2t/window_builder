@@ -1,0 +1,63 @@
+{
+    "nomenclatureType": [
+        "Скло сире",
+        "Триплекс заводський"
+    ],
+
+    "glassType": [
+        {
+            "name" : "4мм",
+            "thiknes" : 4,
+            "options": [
+                "4мм Float"
+            ]
+        },
+        {
+            "name" : "5мм",
+            "thiknes" : 5,
+            "options": [
+                "5мм Float"
+            ]
+        },
+        {
+            "name" : "6мм",
+            "thiknes" : 6,
+            "options": [
+                "6мм SunGuard HP Neutral 60/40 (Ростов)",
+                "6мм Float",
+                "6мм триплекс 3.3.1Е",
+                "6мм триплекс 3.3.1"
+            ]
+        },
+        {
+            "name" : "8мм",
+            "thiknes" : 8,
+            "options": [
+                "8мм Float",
+                "8мм триплекс 4.4.1",
+                "8мм триплекс 4.4.1Е",
+                "8мм SunGuard HP Neutral 60/40 (Рязань)"
+            ]
+        },
+        {
+            "name" : "10мм",
+            "thiknes" : 10,
+            "options": [
+                "10мм Float",
+                "10мм SunGuard HP Neutral 60/40 (Рязань)",
+                "10мм ClimaGuard Premium T+ (Рязань)",
+                "10мм SunGuard Neutral 80/58 HT",
+                "10мм SunGuard SNX 50/23 HT",
+                "10мм SGG Cool Lite SKN 176 II EasyPro",
+                "10мм SGG Cool Lite SKN 154 II EasyPro"
+            ]
+        },
+        {
+            "name" : "12мм",
+            "thiknes" : 12,
+            "options": [
+                "12мм Float"
+            ]
+        }
+    ]
+}
