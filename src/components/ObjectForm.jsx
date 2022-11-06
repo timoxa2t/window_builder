@@ -2,10 +2,14 @@ import { Button, Form } from "react-bootstrap";
 
 
 
-export function ObjectForm(){
+export function ObjectForm({nextStep}){
 
+    const onSubmit = (event) => {
+        event.preventDefault()
+        nextStep()
+    }
     return (
-        <Form>
+        <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="objectName">
                 <Form.Label>Створіть назву об’єкта</Form.Label>
                 <Form.Control type="text" placeholder="Об’єкт 1" />

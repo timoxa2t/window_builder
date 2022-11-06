@@ -30,13 +30,14 @@ const windowTypes = [
     },
 ]
 
-export function TypeSelector(){
+export function TypeSelector({nextStep}){
     const [checked, setChecked] = useState(0)
+
     return (
         <Container>
             <Container className="row row-cols-auto">
                 {windowTypes.map(({name, img}, index) => 
-                    <Card className={style.card + " col m-4"}>
+                    <Card className={style.card + " col m-4"} key={index}>
                         <Button className={style.button}
                             variant={checked === index ? "primary": "secondary"}
                             onClick={() => {setChecked(index)}}
@@ -47,7 +48,7 @@ export function TypeSelector(){
                 )}
                 
             </Container>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={nextStep}>
                 Перейти до наступного кроку
             </Button>
         </Container>
