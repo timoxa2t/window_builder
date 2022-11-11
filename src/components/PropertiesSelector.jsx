@@ -3,9 +3,11 @@ import style from "../css/PropertiesSelector.module.css";
 import flare from "../img/flare.png";
 import glass_12 from "../img/glass_12.png";
 import camera from "../img/camera.png";
-import { useState } from "react";
+import film from "../img/film.png";
+import { useEffect, useState } from "react";
 import { PropertiesForm } from "./PropertiesForm";
 import options from "../options.json";
+import { useSelector } from "react-redux";
 
 const GLASS = "type_glass";
 const SPACER = "type_spacer";
@@ -18,8 +20,16 @@ const allProperties = {
 }
 
 export function PropertiesSelector() {
+
+  const {selectedType} = useSelector(store => store.glass)
+  const [details, setDetails] = useState(getDetails(selectedType.recipe))
   const [component, setComponent] = useState(details[0].key);
 
+  useEffect(() => {
+    console.log(selectedType)
+    setDetails(getDetails(selectedType.recipe)) 
+  }, [selectedType])
+  
   const chooseComponent = (key) => {
     setComponent(key);
   };
@@ -72,36 +82,74 @@ function getImg(type) {
       return glass_12;
     case SPACER:
       return camera;
+    case FILM:
+      return film;
   }
 }
 
-const details = [
-  {
-    key: "glass_1",
-    name: "Скло 1",
-    type: GLASS,
-  },
-  {
-    key: "spacer_1",
-    name: "Камера 1",
-    type: SPACER,
-  },
-  {
-    key: "glass_2",
-    name: "Скло 2",
-    type: GLASS,
-  },
-  {
-    key: "spacer_2",
-    name: "Камера 2",
-    type: SPACER,
-  },
-  {
-    key: "glass_3",
-    name: "Скло 3",
-    type: GLASS,
-  },
-];
+
+function getDetails(recipe){
+  let counters = {}
+  let type = ""
+  let name = ""
+  let key = ""
+  return  recipe.map((item) => {
+    switch(item){
+      case GLASS: 
+        type = GLASS
+        name = "Скло"
+        key = "glass"
+        break
+      case SPACER: 
+        type = SPACER
+        name = "Камера"
+        key = "spacer"
+        break
+      case FILM: 
+        type = FILM
+        name = "Плівка"
+        key = "film"
+        break
+    }
+
+    counters[type] = counters.hasOwnProperty(type) ? ++counters[type]: 1 
+
+    return {
+      key: `${key}_${counters[type]}`,
+      name: `${name} ${counters[type]}`,
+      type: type,
+    }
+  })
+
+ 
+}
+// const details = [
+//   {
+//     key: "glass_1",
+//     name: "Скло 1",
+//     type: GLASS,
+//   },
+//   {
+//     key: "spacer_1",
+//     name: "Камера 1",
+//     type: SPACER,
+//   },
+//   {
+//     key: "glass_2",
+//     name: "Скло 2",
+//     type: GLASS,
+//   },
+//   {
+//     key: "spacer_2",
+//     name: "Камера 2",
+//     type: SPACER,
+//   },
+//   {
+//     key: "glass_3",
+//     name: "Скло 3",
+//     type: GLASS,
+//   },
+// ];
 
 function getFilters(options) {
   const allFilters = new Map();

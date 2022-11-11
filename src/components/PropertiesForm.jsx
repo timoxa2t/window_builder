@@ -13,7 +13,7 @@ export function PropertiesForm({properties}){
 
     return (
         <Form>
-            {properties.map(({type, name, title, options, value}) => 
+            {properties.map(({type, name, title, options, value, filters}) => 
                 <PropertyElement key={name} type={type} name={name} title={title} options={options} value={value}/>  
             )}
              

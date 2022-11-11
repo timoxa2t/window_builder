@@ -1,46 +1,32 @@
-import monosklo from "../img/monosklo.png"
-import triplex from "../img/triplex.png"
-import odnosklo from "../img/odnosklo.png"
-import dvosklo from "../img/dvosklo.png"
-import trysklo from "../img/trysklo.png"
+
 import { Button, Card, Container, Image } from "react-bootstrap"
 import { useState } from "react"
 import style from'../css/TypeSelector.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { setType } from "../store/glass/actions";
 
-const windowTypes = [
-    {
-        name: "Моноскло",
-        img: monosklo
-    },
-    {
-        name: "Тріплекс",
-        img: triplex
-    },
-    {
-        name: "Однокамерний склопакет",
-        img: odnosklo
-    },
-    {
-        name: "Двокамерний склопакет",
-        img: dvosklo
-    },
-    {
-        name: "Трикамерний склопакет",
-        img: trysklo
-    },
-]
+
 
 export function TypeSelector({nextStep}){
-    const [checked, setChecked] = useState(0)
+    
+    const windowTypes = useSelector(state => state.glass.windowTypes)
+    const [checked, setChecked] = useState(windowTypes[0].id)
+    const dispatch = useDispatch()
+    
+    
+    const setWindowType = (id) => {
+        dispatch(setType(id))
+        setChecked(id)
+    }
 
     return (
         <Container>
             <Container className="row row-cols-auto">
-                {windowTypes.map(({name, img}, index) => 
+                {windowTypes.map(({name, img, id}, index) => 
                     <Card className={style.card + " col m-4"} key={index}>
                         <Button className={style.button}
-                            variant={checked === index ? "primary": "secondary"}
-                            onClick={() => {setChecked(index)}}
+                            variant={checked === id ? "primary": "secondary"}
+                            onClick={() => setWindowType(id)}
                         >{name}
                         </Button>
                         <Image src={img} alt="window type" height="200"/>
