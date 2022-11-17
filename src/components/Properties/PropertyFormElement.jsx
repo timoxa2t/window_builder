@@ -4,11 +4,11 @@ import { Form } from "react-bootstrap"
 const FORM_SELECT = "select"
 const FORM_CHECKBOX = "checkbox"
 
-export function PropertyElement({type, name, title, options, value}){
+export function PropertyFormElement({type, name, title, options, value, checkFilters}){
 
     const chooseOption = (event) => {
         const {id, value} = event.target
-        console.log(id, value)
+        checkFilters(id, value)
     }
 
     switch(type){

@@ -4,12 +4,14 @@
         "type": "select",
         "name": "nomenclatureType",
         "title": "Вид номенклатури",
+        "filterOf": "glassType",
         "order": 1
     },
     { 
         "type": "select",
         "name": "glassThikness",
         "title": "Товщина",
+        "filterOf": "glassType",
         "order": 2 
     },
 
@@ -154,6 +156,72 @@
       "order": 4 
     }
   ],
-  "spacer":[],
-  "film": []
+  "spacer":[
+    {
+      "type": "select",
+      "title": "Газонаповнення",
+      "name": "gassType",
+      "order": 1,
+      "options": [
+        {
+          "title": "Аргон"
+        }
+      ]
+    },
+    { 
+      "type": "select",
+      "name": "spacerThikness",
+      "title": "Товщина",
+      "filterOf": "spacerNomenclature",
+      "order": 2 
+    },
+    { 
+      "type": "select",
+      "name": "spacerType",
+      "title": "Тип рамки",
+      "filterOf": "spacerNomenclature",
+      "order": 3 
+    },
+
+    {
+      "type": "select",
+      "title": "Вид номенклатури",
+      "name": "spacerNomenclature",
+      "order": 4,
+      "options": [
+        {
+          "filters": {
+            "spacerThikness": "6",
+            "spacerType": "Гнутєва рамка"
+          },
+          "title": "5,5 рамка гнутєва"
+        },
+        {
+          "filters": {
+            "glassThikness": "8",
+            "nomenclatureType": "Тепла рамка"
+          },
+          "title": "8 Chromatech Hellgray RAL 7035"
+        }
+        ,
+        {
+          "filters": {
+            "glassThikness": "10",
+            "nomenclatureType": "Тепла рамка"
+          },
+          "title": "10 Chromatech Black RAL 9004 "
+        },
+        {
+          "filters": {
+            "glassThikness": "11",
+            "nomenclatureType": "Гнутєва рамка"
+          },
+          "title": "11,5 рамка гнутєва "
+        }
+      ]
+    }
+  ],
+  "film": [
+   
+  ]
 }

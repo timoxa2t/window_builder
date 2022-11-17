@@ -1,7 +1,7 @@
 
 import { Nav, Tab, Tabs } from "react-bootstrap";
 import { ObjectForm } from "./ObjectForm";
-import { PropertiesSelector } from "./PropertiesSelector";
+import { PropertiesSelector } from "./Properties/PropertiesSelector";
 import { TypeSelector } from "./TypeSelector";
 import style from'../css/Builder.module.css';
 import { useState } from "react";

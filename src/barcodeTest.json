@@ -1,0 +1,43 @@
+[
+  {
+      "key": "glass_1",
+      "name": "Скло 1",
+      "type": "type_glass",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "4mm Float"
+        },
+        {
+          "title": "HST",
+          "value": true
+        }
+      ]
+  },
+  {
+      "key": "spacer_1",
+      "name": "Камера 1",
+      "type": "type_spacer",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "5,5 грута рамка"
+        }
+      ]
+  },
+  {
+      "key": "glass_2",
+      "name": "Скло 2",
+      "type": "type_glass",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "4mm Float"
+        },
+        {
+          "title": "HST",
+          "value": false
+        }
+      ]
+  }
+]

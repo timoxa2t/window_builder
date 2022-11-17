@@ -29,12 +29,14 @@ ul{
     position: relative;
     width: 30px;
     display: inline-block;
+    transition: width 0.3s ease-in;
 }
 
 .component_img{
     height: 270px;
     position: relative;
     right: 10px;
+    transition: height, margin-left 0.3s ease-in;
 }
 
 .component__active{

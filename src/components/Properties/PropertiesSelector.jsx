@@ -1,12 +1,12 @@
 import { Col, Container, Image, Nav, Row, Tab, Tabs } from "react-bootstrap";
-import style from "../css/PropertiesSelector.module.css";
-import flare from "../img/flare.png";
-import glass_12 from "../img/glass_12.png";
-import camera from "../img/camera.png";
-import film from "../img/film.png";
+import style from "../../css/PropertiesSelector.module.css";
+import flare from "../../img/flare.png";
+import glass_12 from "../../img/glass_12.png";
+import camera from "../../img/camera.png";
+import film from "../../img/film.png";
 import { useEffect, useState } from "react";
 import { PropertiesForm } from "./PropertiesForm";
-import options from "../options.json";
+import options from "../../options.json";
 import { useSelector } from "react-redux";
 
 const GLASS = "type_glass";
@@ -19,6 +19,8 @@ const allProperties = {
     [FILM]: getProperties(options.film),
 }
 
+
+
 export function PropertiesSelector() {
 
   const {selectedType} = useSelector(store => store.glass)
@@ -26,7 +28,6 @@ export function PropertiesSelector() {
   const [component, setComponent] = useState(details[0].key);
 
   useEffect(() => {
-    console.log(selectedType)
     setDetails(getDetails(selectedType.recipe)) 
   }, [selectedType])
   
@@ -120,36 +121,7 @@ function getDetails(recipe){
       type: type,
     }
   })
-
- 
 }
-// const details = [
-//   {
-//     key: "glass_1",
-//     name: "Скло 1",
-//     type: GLASS,
-//   },
-//   {
-//     key: "spacer_1",
-//     name: "Камера 1",
-//     type: SPACER,
-//   },
-//   {
-//     key: "glass_2",
-//     name: "Скло 2",
-//     type: GLASS,
-//   },
-//   {
-//     key: "spacer_2",
-//     name: "Камера 2",
-//     type: SPACER,
-//   },
-//   {
-//     key: "glass_3",
-//     name: "Скло 3",
-//     type: GLASS,
-//   },
-// ];
 
 function getFilters(options) {
   const allFilters = new Map();
@@ -169,9 +141,10 @@ function getProperties(props){
     const propsWithOptions = props.filter(item => item.hasOwnProperty("options"))
     const propsWithoutOptions = props.filter(item => !item.hasOwnProperty("options"))
     const allFilters = propsWithOptions.reduce((acc, {options}) => new Map([...acc, ...getFilters(options)]), new Map)
+
     const propsWithAddedOptions = propsWithoutOptions.map(item => {
         if(allFilters.has(item.name)) {
-            item.options = [...allFilters.get(item.name)]
+            item.options = [...allFilters.get(item.name)].map(item => ({title: item}))
         }
         return item
     })
