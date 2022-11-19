@@ -8,9 +8,11 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, combineReducers, createStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
+import { barcodeReducer } from './store/details/reducer';
 
 const rootReducer = combineReducers({
   glass: glassReducer,
+  details: barcodeReducer,
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

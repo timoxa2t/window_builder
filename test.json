@@ -1,0 +1,60 @@
+{
+  "type": "info",
+  "data": [
+    {
+      "key": "glass_1",
+      "name": "Скло 1",
+      "type": "type_glass",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "8мм триплекс 4.4.1Е"
+        }
+      ]
+    },
+    {
+      "key": "spacer_1",
+      "name": "Рамка 1",
+      "type": "type_spacer",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "16 Swisspacer Weiss RAL 9016"
+        }
+      ]
+    },
+    {
+      "key": "glass_2",
+      "name": "Скло 2",
+      "type": "type_glass",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "6мм Float"
+        }
+      ]
+    },
+    {
+      "key": "spacer_2",
+      "name": "Рамка 2",
+      "type": "type_spacer",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "14 Swisspacer Weiss RAL 9016"
+        }
+      ]
+    },
+    {
+      "key": "glass_3",
+      "name": "Скло 3",
+      "type": "type_glass",
+      "properties": [
+        {
+          "title": "Номенклатура",
+          "value": "6мм ClimaGuard Premium T+ (Рязань)"
+        }
+      ]
+    }
+  ]
+}

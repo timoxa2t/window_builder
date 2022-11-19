@@ -33,7 +33,10 @@ function ElementInfo({properties}){
     const getValue = (value) => {
         switch(typeof value){
             case "boolean": 
-                return <FontAwesomeIcon icon={value ? faSquarePlus: faSquareMinus} />
+                return <FontAwesomeIcon 
+                    className={style.property + " " + (value ? style.checked: style.not_checked)} 
+                    icon={value ? faSquarePlus: faSquareMinus} 
+                />
             default: 
                 return <h3>{value}</h3>
         }

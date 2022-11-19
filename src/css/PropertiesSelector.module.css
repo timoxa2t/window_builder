@@ -52,3 +52,15 @@ ul{
     height: 300px;
     margin-left: 50px;
 }
+
+.property{
+    font-size: 30px;
+}
+
+.checked{
+    color: lightgreen;
+}
+
+.not_checked{
+    color: lightcoral;
+}
