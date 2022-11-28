@@ -13,7 +13,6 @@ export function Header(){
                 <NavDropdown title="особистий кабінет" id="user-menu">
                     <NavDropdown.Item href="#action/3.1">Профіль</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Замовлення</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Вийти</NavDropdown.Item>
                 </NavDropdown>

@@ -1,0 +1,60 @@
+.visualization_container{
+    width: fit-content;
+    height: 300px;
+    margin: auto;
+    margin-top: 200px;
+}
+
+.component_list{
+    display: inline-block;
+}
+
+.component{
+    position: relative;
+    width: 30px;
+    display: inline-block;
+    transition: width 0.3s ease-in;
+}
+
+.component_img{
+    height: 270px;
+    position: relative;
+    right: 10px;
+    transition: height, margin-left 0.3s ease-in;
+}
+
+.component__active{
+    width: 150px;
+}
+
+.component:hover{
+    width: 150px;
+}
+
+.component:hover .component_img,
+.component__active .component_img{
+    height: 300px;
+    margin-left: 50px;
+}
+
+.size{
+    position: absolute;
+    display: inline-block;
+    background-color: grey;
+    text-align: center;
+}
+
+.width_size{
+    width: 100px;
+    height: 2px;
+    translate: -28px 270px;
+    rotate: 326deg;
+
+}
+
+.height_size{
+    width: 212px;
+    height: 2px;
+    rotate: 270deg;
+    translate: -35px 122px;
+}

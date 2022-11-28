@@ -1,43 +1,209 @@
-[
-  {
+{
+  "type": "info",
+  "width": 1000,
+  "height": 2000,
+  "data": [
+    {
       "key": "glass_1",
       "name": "Скло 1",
       "type": "type_glass",
+      "thickness": 7.8,
       "properties": [
         {
-          "title": "Номенклатура",
-          "value": "4mm Float"
+          "title": "Вид номенклатури",
+          "value": "Скло сире"
         },
         {
-          "title": "HST",
-          "value": true
-        }
-      ]
-  },
-  {
-      "key": "spacer_1",
-      "name": "Камера 1",
-      "type": "type_spacer",
-      "properties": [
+          "title": "Товщина",
+          "value": 7.8
+        },
         {
           "title": "Номенклатура",
-          "value": "5,5 грута рамка"
-        }
-      ]
-  },
-  {
-      "key": "glass_2",
-      "name": "Скло 2",
-      "type": "type_glass",
-      "properties": [
+          "value": "8мм SunGuard HP Neutral 60/40 (Рязань)"
+        },
         {
-          "title": "Номенклатура",
-          "value": "4mm Float"
+          "title": "Термообробка",
+          "value": "Гартування"
         },
         {
           "title": "HST",
           "value": false
+        },
+        {
+          "title": "Піскоструй",
+          "value": ""
+        },
+        {
+          "title": "Фарба",
+          "value": ""
+        },
+        {
+          "title": "Газонаповнення",
+          "value": ""
         }
       ]
-  }
-]
+    },
+    {
+      "key": "spacer_1",
+      "name": "Рамка 1",
+      "type": "type_spacer",
+      "thickness": 16,
+      "properties": [
+        {
+          "title": "Вид номенклатури",
+          "value": "Тепла рамка"
+        },
+        {
+          "title": "Товщина",
+          "value": 16
+        },
+        {
+          "title": "Номенклатура",
+          "value": "16 Chromatech Black RAL 9004"
+        },
+        {
+          "title": "Термообробка",
+          "value": ""
+        },
+        {
+          "title": "HST",
+          "value": false
+        },
+        {
+          "title": "Піскоструй",
+          "value": ""
+        },
+        {
+          "title": "Фарба",
+          "value": ""
+        },
+        {
+          "title": "Газонаповнення",
+          "value": "Аргон"
+        }
+      ]
+    },
+    {
+      "key": "glass_2",
+      "name": "Скло 2",
+      "type": "type_glass",
+      "thickness": 5.85,
+      "properties": [
+        {
+          "title": "Вид номенклатури",
+          "value": "Скло сире"
+        },
+        {
+          "title": "Товщина",
+          "value": 5.85
+        },
+        {
+          "title": "Номенклатура",
+          "value": "6мм Float"
+        },
+        {
+          "title": "Термообробка",
+          "value": "Гартування"
+        },
+        {
+          "title": "HST",
+          "value": false
+        },
+        {
+          "title": "Піскоструй",
+          "value": ""
+        },
+        {
+          "title": "Фарба",
+          "value": ""
+        },
+        {
+          "title": "Газонаповнення",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "key": "spacer_2",
+      "name": "Рамка 2",
+      "type": "type_spacer",
+      "thickness": 16,
+      "properties": [
+        {
+          "title": "Вид номенклатури",
+          "value": "Тепла рамка"
+        },
+        {
+          "title": "Товщина",
+          "value": 16
+        },
+        {
+          "title": "Номенклатура",
+          "value": "16 Chromatech Black RAL 9004"
+        },
+        {
+          "title": "Термообробка",
+          "value": ""
+        },
+        {
+          "title": "HST",
+          "value": false
+        },
+        {
+          "title": "Піскоструй",
+          "value": ""
+        },
+        {
+          "title": "Фарба",
+          "value": ""
+        },
+        {
+          "title": "Газонаповнення",
+          "value": "Аргон"
+        }
+      ]
+    },
+    {
+      "key": "glass_3",
+      "name": "Скло 3",
+      "type": "type_glass",
+      "thickness": 5.85,
+      "properties": [
+        {
+          "title": "Вид номенклатури",
+          "value": "Скло сире"
+        },
+        {
+          "title": "Товщина",
+          "value": 5.85
+        },
+        {
+          "title": "Номенклатура",
+          "value": "6мм Float"
+        },
+        {
+          "title": "Термообробка",
+          "value": "Гартування"
+        },
+        {
+          "title": "HST",
+          "value": false
+        },
+        {
+          "title": "Піскоструй",
+          "value": ""
+        },
+        {
+          "title": "Фарба",
+          "value": "Фарба RAL 7031 FERRO MediacheM S.r.l."
+        },
+        {
+          "title": "Газонаповнення",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "width": 445,
+  "height": 1600
+}

@@ -5,6 +5,7 @@ ul{
 }
 
 .visual_side{
+    border-radius: 0 15px 0 0;
     height: 100%;
     text-align: left;
     background: linear-gradient(130.81deg, #78BBF9 8.2%, #D1E8FD 97.71%);
@@ -16,51 +17,4 @@ ul{
 
 .flare{
     position: absolute;
-}
-
-.component_list{
-    width: fit-content;
-    height: 300px;
-    margin: auto;
-    margin-top: 200px;
-}
-
-.component{
-    position: relative;
-    width: 30px;
-    display: inline-block;
-    transition: width 0.3s ease-in;
-}
-
-.component_img{
-    height: 270px;
-    position: relative;
-    right: 10px;
-    transition: height, margin-left 0.3s ease-in;
-}
-
-.component__active{
-    width: 150px;
-}
-
-.component:hover{
-    width: 150px;
-}
-
-.component:hover .component_img,
-.component__active .component_img{
-    height: 300px;
-    margin-left: 50px;
-}
-
-.property{
-    font-size: 30px;
-}
-
-.checked{
-    color: lightgreen;
-}
-
-.not_checked{
-    color: lightcoral;
 }

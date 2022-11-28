@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Properties } from "./Properties/Properties";
-import barcodeTest from "../barcodeTest.json";
 import { useDispatch, useSelector } from "react-redux";
 import { PropertiesVisualization } from "./Properties/PropertiesVisualization";
-import { getDetails } from "../utilities";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PropertiesInfo } from "./Properties/PropertiesInfo";
 import { getBarcodeInfo } from "../store/details/action";
 import { useEffect } from "react";
@@ -14,12 +12,16 @@ export function BarcodeInfo() {
 
   const dispatch = useDispatch()
   const {barcode} = useParams()
-  const {components} = useSelector(store => store.details)
+  const {components, width, height} = useSelector(store => store.details)
   const [component, setComponent] = useState("")
 
   useEffect(() => {
     dispatch(getBarcodeInfo({barcode}))
-  }, [barcode])
+  }, [barcode, dispatch])
+
+  useEffect(() => {
+    setComponent(components[0]?.key)
+  }, [components])
 
   const chooseComponent = (key) => {
     setComponent(key);
@@ -27,7 +29,7 @@ export function BarcodeInfo() {
 
   return (
     <Properties>
-        <PropertiesVisualization details={components} chooseComponent={chooseComponent} activeComponent={component}/>
+        <PropertiesVisualization details={components} chooseComponent={chooseComponent} activeComponent={component} width={width} height={height}/>
         <PropertiesInfo details={components} chooseComponent={chooseComponent} activeComponent={component}/>
     </Properties>
   );

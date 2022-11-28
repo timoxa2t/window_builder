@@ -1,7 +1,14 @@
 
+import glass_4 from "./img/glass_4.png";
+import glass_5 from "./img/glass_5.png";
+import glass_6 from "./img/glass_6.png";
+import glass_8 from "./img/glass_8.png";
+import glass_10 from "./img/glass_10.png";
 import glass_12 from "./img/glass_12.png";
 import camera from "./img/camera.png";
 import film from "./img/film.png";
+
+export const TESTING = process.env.NODE_ENV === "development";
 
 export const GLASS = "type_glass";
 export const SPACER = "type_spacer";
@@ -42,14 +49,30 @@ export function getDetails(recipe){
     })
   }
 
-export function getImg(type) {
-    switch (type) {
-        case GLASS:
-        return glass_12;
-        case SPACER:
-        return camera;
-        case FILM:
-        return film;
+export function getImg(type, thickness) {
+  const options = {
+    [GLASS](thick){
+      switch(thick){
+        case 4: return glass_4
+        case 5: return glass_5 
+        case 6: return glass_6 
+        case 8: return glass_8 
+        case 10: return glass_10 
+        case 12: return glass_12 
+        default: return glass_6
+      }
+    },
+    [SPACER](thick){
+      switch(thick){
+        default: return camera
+      }
+    },
+    [FILM](thick){
+      switch(thick){
+        default: return film
+      }
     }
+  }
+  return options[type](Math.round(thickness))
 }
   
