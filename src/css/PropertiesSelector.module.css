@@ -3,7 +3,7 @@ ul{
     list-style: none;
     padding: 0;
 }
-
+ 
 .visual_side{
     border-radius: 0 15px 0 0;
     height: 100%;
@@ -18,3 +18,4 @@ ul{
 .flare{
     position: absolute;
 }
+
