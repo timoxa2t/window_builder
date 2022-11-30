@@ -13,28 +13,33 @@
     position: relative;
     width: 30px;
     display: inline-block;
-    transition: width 0.3s ease-in;
+    transition: width, margin-left 0.3s ease-in;
 }
 
 .component_img{
     height: 270px;
     position: relative;
-    right: 10px;
+    right: 15px;
     transition: height, margin-left 0.3s ease-in;
 }
 
-.component__active{
-    width: 150px;
+.component__active:not(:last-child),
+.component:hover:not(:last-child){
+    margin-left: 30px;
+    width: 100px;
 }
 
-.component:hover{
-    width: 150px;
+.component:hover:last-child,
+.component__active:last-child{
+    margin-left: 30px;
+    width: 30px;
 }
+
 
 .component:hover .component_img,
 .component__active .component_img{
     height: 300px;
-    margin-left: 50px;
+
 }
 
 .size{

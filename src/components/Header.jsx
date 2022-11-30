@@ -1,13 +1,19 @@
 import { Button, Container, Navbar, NavDropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import logo from "../logo.svg"
 
 
 export function Header(){
+    const navigate = useNavigate();
+
+    const goToBuilder = () => {
+        navigate("/builder", { replace: true });
+    }
 
     return (
         <Navbar expand="lg">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="https://skloresurs.com/">
                     <img src={logo}/>
                 </Navbar.Brand>
                 <NavDropdown title="особистий кабінет" id="user-menu">
@@ -16,7 +22,7 @@ export function Header(){
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Вийти</NavDropdown.Item>
                 </NavDropdown>
-                <Button>Створити замовлення</Button>
+                <Button onClick={goToBuilder}>Створити замовлення</Button>
             </Container>
             
         </Navbar>

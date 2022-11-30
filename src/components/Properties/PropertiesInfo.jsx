@@ -14,7 +14,7 @@ export function PropertiesInfo({ details, activeComponent, chooseComponent }) {
     >
       <Nav>
         {details.map(({ key, name }) => (
-          <Nav.Item key={key}>
+          <Nav.Item key={key} className={style.nav_tab + (key === activeComponent ? " " + style.nav_tab__active: "")}>
             <Nav.Link eventKey={key}>{name}</Nav.Link>
           </Nav.Item>
         ))}

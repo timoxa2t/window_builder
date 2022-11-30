@@ -1,7 +1,5 @@
 {
   "type": "info",
-  "width": 1000,
-  "height": 2000,
   "data": [
     {
       "key": "glass_1",
@@ -36,10 +34,6 @@
         {
           "title": "Фарба",
           "value": ""
-        },
-        {
-          "title": "Газонаповнення",
-          "value": ""
         }
       ]
     },
@@ -60,22 +54,6 @@
         {
           "title": "Номенклатура",
           "value": "16 Chromatech Black RAL 9004"
-        },
-        {
-          "title": "Термообробка",
-          "value": ""
-        },
-        {
-          "title": "HST",
-          "value": false
-        },
-        {
-          "title": "Піскоструй",
-          "value": ""
-        },
-        {
-          "title": "Фарба",
-          "value": ""
         },
         {
           "title": "Газонаповнення",
@@ -116,10 +94,6 @@
         {
           "title": "Фарба",
           "value": ""
-        },
-        {
-          "title": "Газонаповнення",
-          "value": ""
         }
       ]
     },
@@ -140,22 +114,6 @@
         {
           "title": "Номенклатура",
           "value": "16 Chromatech Black RAL 9004"
-        },
-        {
-          "title": "Термообробка",
-          "value": ""
-        },
-        {
-          "title": "HST",
-          "value": false
-        },
-        {
-          "title": "Піскоструй",
-          "value": ""
-        },
-        {
-          "title": "Фарба",
-          "value": ""
         },
         {
           "title": "Газонаповнення",
@@ -196,10 +154,6 @@
         {
           "title": "Фарба",
           "value": "Фарба RAL 7031 FERRO MediacheM S.r.l."
-        },
-        {
-          "title": "Газонаповнення",
-          "value": ""
         }
       ]
     }

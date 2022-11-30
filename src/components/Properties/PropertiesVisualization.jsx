@@ -20,12 +20,13 @@ export function PropertiesVisualization({details, chooseComponent, activeCompone
           </li>
         ))}
       </ul>
-      <div className={[style.width_size, style.size].join(" ")}>
+      {width && <div className={[style.width_size, style.size].join(" ")}>
           <span>{width}</span>
       </div>
-      <div className={[style.height_size, style.size].join(" ")}>
+      }
+      {height && <div className={[style.height_size, style.size].join(" ")}>
         <span>{height}</span>
-      </div>
+      </div>}
     </Container>
   );
 }

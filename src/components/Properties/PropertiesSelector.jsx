@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { PropertiesForm } from "./PropertiesForm";
 import options from "../../options.json";
 import { useSelector } from "react-redux";
+import { Properties } from "./Properties";
+import { PropertiesVisualization } from "./PropertiesVisualization";
 
 const GLASS = "type_glass";
 const SPACER = "type_spacer";
@@ -25,7 +27,7 @@ export function PropertiesSelector() {
 
   const {selectedType} = useSelector(store => store.glass)
   const [details, setDetails] = useState(getDetails(selectedType.recipe))
-  const [component, setComponent] = useState(details[0].key);
+  const [component, setComponent] = useState(details[0]?.key);
 
   useEffect(() => {
     setDetails(getDetails(selectedType.recipe)) 
@@ -35,29 +37,13 @@ export function PropertiesSelector() {
     setComponent(key);
   };
 
-  return (
-    <Row className={style.container}>
-      <Col className={style.visual_side}>
-        <Image className={style.flare} src={flare} />
-        <ul className={style.component_list}>
-          {details.map(({ key, name, type }) => (
-            <li
-              key={key}
-              className={
-                style.component +
-                (key === component ? " " + style.component__active : "")
-              }
-              onClick={() => chooseComponent(key)}
-            >
-              <Image className={style.component_img} src={getImg(type)} />
-            </li>
-          ))}
-        </ul>
-      </Col>
-      <Col>
+
+    return (
+      <Properties>
+        <PropertiesVisualization details={details} chooseComponent={chooseComponent} activeComponent={component} />
         <Tab.Container defaultActiveKey={component} onSelect={chooseComponent}>
-          <Nav>
-            {details.map(({ key, name }) => (
+           <Nav>
+             {details.map(({ key, name }) => (
               <Nav.Item key={key}>
                 <Nav.Link eventKey={key}>{name}</Nav.Link>
               </Nav.Item>
@@ -72,9 +58,48 @@ export function PropertiesSelector() {
             ))}
           </Tab.Content>
         </Tab.Container>
-      </Col>
-    </Row>
-  );
+      </Properties>
+    )
+  // return (
+  //   <Row className={style.container}>
+  //     <Col className={style.visual_side}>
+  //       <Image className={style.flare} src={flare} />
+  //       <ul className={style.component_list}>
+  //         {details.map(({ key, name, type }) => (
+  //           <li
+  //             key={key}
+  //             className={
+  //               style.component +
+  //               (key === component ? " " + style.component__active : "")
+  //             }
+  //             onClick={() => chooseComponent(key)}
+  //           >
+  //             <Image className={style.component_img} src={getImg(type)} />
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     </Col>
+  //     <Col>
+  //       <Tab.Container defaultActiveKey={component} onSelect={chooseComponent}>
+  //         <Nav>
+  //           {details.map(({ key, name }) => (
+  //             <Nav.Item key={key}>
+  //               <Nav.Link eventKey={key}>{name}</Nav.Link>
+  //             </Nav.Item>
+  //           ))}
+  //         </Nav>
+
+  //         <Tab.Content className={style.tab_container}>
+  //           {details.map(({ key, name, type }) => (
+  //             <Tab.Pane eventKey={key} active={component === key} >
+  //               <PropertiesForm properties={allProperties[type]} />
+  //             </Tab.Pane>
+  //           ))}
+  //         </Tab.Content>
+  //       </Tab.Container>
+  //     </Col>
+  //   </Row>
+  // );
 }
 
 function getImg(type) {

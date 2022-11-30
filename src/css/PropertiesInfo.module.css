@@ -37,3 +37,12 @@
 .not_checked{
     color: red;
 }
+
+.nav_tab{
+    
+    border-radius: 5px;
+}
+
+.nav_tab__active{
+    background-color: lightcyan;
+}
