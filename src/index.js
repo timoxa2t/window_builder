@@ -3,20 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {glassReducer} from './store/glass/reducer'
+
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { applyMiddleware, combineReducers, createStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
-import { barcodeReducer } from './store/details/reducer';
+import store from "./store/globalStore"
 
-const rootReducer = combineReducers({
-  glass: glassReducer,
-  details: barcodeReducer,
-})
-
-const store = createStore(rootReducer, applyMiddleware(thunk))
-// store.dispatch(getServicesAsync())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

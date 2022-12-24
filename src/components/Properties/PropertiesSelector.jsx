@@ -1,9 +1,5 @@
-import { Col, Container, Image, Nav, Row, Tab, Tabs } from "react-bootstrap";
+import { Nav, Tab } from "react-bootstrap";
 import style from "../../css/PropertiesSelector.module.css";
-import flare from "../../img/flare.png";
-import glass_12 from "../../img/glass_12.png";
-import camera from "../../img/camera.png";
-import film from "../../img/film.png";
 import { useEffect, useState } from "react";
 import { PropertiesForm } from "./PropertiesForm";
 import options from "../../options.json";
@@ -21,9 +17,7 @@ const allProperties = {
     [FILM]: getProperties(options.film),
 }
 
-
-
-export function PropertiesSelector() {
+export function PropertiesSelector({nextStep}) {
 
   const {selectedType} = useSelector(store => store.glass)
   const [details, setDetails] = useState(getDetails(selectedType.recipe))
@@ -37,80 +31,40 @@ export function PropertiesSelector() {
     setComponent(key);
   };
 
+  const changeThickness = (thickness) => {
+    let newDets = [...details]
+    const index = newDets.findIndex(({key}) => key === component)
+    newDets[index].thickness = thickness
+    setDetails(newDets)
+  }
 
     return (
       <Properties>
         <PropertiesVisualization details={details} chooseComponent={chooseComponent} activeComponent={component} />
         <Tab.Container defaultActiveKey={component} onSelect={chooseComponent}>
            <Nav>
-             {details.map(({ key, name }) => (
-              <Nav.Item key={key}>
-                <Nav.Link eventKey={key}>{name}</Nav.Link>
+             {details.map(({ key, name }) => {
+              const activeNavClass =  (key === component ? " " + style.nav_item__active: "")
+              const activeNavLinkClass =  (key === component ? " " + style.nav_link__active: "")
+              return (
+              <Nav.Item 
+                key={key} 
+                className={style.nav_item + activeNavClass}>
+                <Nav.Link className={style.nav_link + activeNavLinkClass} eventKey={key}>{name}</Nav.Link>
               </Nav.Item>
-            ))}
+            )})}
           </Nav>
 
           <Tab.Content className={style.tab_container}>
             {details.map(({ key, name, type }) => (
-              <Tab.Pane eventKey={key} active={component === key} >
-                <PropertiesForm properties={allProperties[type]} />
+              <Tab.Pane key={key} eventKey={key} active={component === key} >
+                <PropertiesForm properties={allProperties[type]} changeThickness={changeThickness} nextStep={nextStep} />
               </Tab.Pane>
             ))}
           </Tab.Content>
         </Tab.Container>
       </Properties>
     )
-  // return (
-  //   <Row className={style.container}>
-  //     <Col className={style.visual_side}>
-  //       <Image className={style.flare} src={flare} />
-  //       <ul className={style.component_list}>
-  //         {details.map(({ key, name, type }) => (
-  //           <li
-  //             key={key}
-  //             className={
-  //               style.component +
-  //               (key === component ? " " + style.component__active : "")
-  //             }
-  //             onClick={() => chooseComponent(key)}
-  //           >
-  //             <Image className={style.component_img} src={getImg(type)} />
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     </Col>
-  //     <Col>
-  //       <Tab.Container defaultActiveKey={component} onSelect={chooseComponent}>
-  //         <Nav>
-  //           {details.map(({ key, name }) => (
-  //             <Nav.Item key={key}>
-  //               <Nav.Link eventKey={key}>{name}</Nav.Link>
-  //             </Nav.Item>
-  //           ))}
-  //         </Nav>
-
-  //         <Tab.Content className={style.tab_container}>
-  //           {details.map(({ key, name, type }) => (
-  //             <Tab.Pane eventKey={key} active={component === key} >
-  //               <PropertiesForm properties={allProperties[type]} />
-  //             </Tab.Pane>
-  //           ))}
-  //         </Tab.Content>
-  //       </Tab.Container>
-  //     </Col>
-  //   </Row>
-  // );
-}
-
-function getImg(type) {
-  switch (type) {
-    case GLASS:
-      return glass_12;
-    case SPACER:
-      return camera;
-    case FILM:
-      return film;
-  }
 }
 
 
@@ -136,6 +90,8 @@ function getDetails(recipe){
         name = "Плівка"
         key = "film"
         break
+      default:
+
     }
 
     counters[type] = counters.hasOwnProperty(type) ? ++counters[type]: 1 
@@ -165,7 +121,7 @@ function getFilters(options) {
 function getProperties(props){
     const propsWithOptions = props.filter(item => item.hasOwnProperty("options"))
     const propsWithoutOptions = props.filter(item => !item.hasOwnProperty("options"))
-    const allFilters = propsWithOptions.reduce((acc, {options}) => new Map([...acc, ...getFilters(options)]), new Map)
+    const allFilters = propsWithOptions.reduce((acc, {options}) => new Map([...acc, ...getFilters(options)]), new Map())
 
     const propsWithAddedOptions = propsWithoutOptions.map(item => {
         if(allFilters.has(item.name)) {

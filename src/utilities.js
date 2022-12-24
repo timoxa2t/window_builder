@@ -73,6 +73,7 @@ export function getImg(type, thickness) {
       }
     }
   }
+
   return options[type](Math.round(thickness))
 }
   

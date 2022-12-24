@@ -9,8 +9,9 @@
     },
     { 
         "type": "select",
-        "name": "glassThikness",
+        "name": "thikness",
         "title": "Товщина",
+        "sufix": "мм",
         "filterOf": "glassType",
         "order": 2 
     },
@@ -23,126 +24,126 @@
       "options": [
         {
           "filters": {
-            "glassThikness": "4мм",
+            "thikness": "4",
             "nomenclatureType": "Скло сире"
           },
           "title": "4мм Float"
         },
         {
           "filters": {
-            "glassThikness": "5мм",
+            "thikness": "5",
             "nomenclatureType": "Скло сире"
           },
           "title": "5мм Float"
         },
         {
           "filters": {
-            "glassThikness": "6мм",
+            "thikness": "6",
             "nomenclatureType": "Скло сире"
           },
           "title": "6мм SunGuard HP Neutral 60/40 (Ростов)"
         },
         {
           "filters": {
-            "glassThikness": "6мм",
+            "thikness": "6",
             "nomenclatureType": "Скло сире"
           },
           "title": "6мм Float"
         },
         {
           "filters": {
-            "glassThikness": "6мм",
+            "thikness": "6",
             "nomenclatureType": "Триплекс заводський"
           },
           "title": "6мм триплекс 3.3.1Е"
         },
         {
           "filters": {
-            "glassThikness": "6мм",
+            "thikness": "6",
             "nomenclatureType": "Триплекс заводський"
           },
           "title": "6мм триплекс 3.3.1"
         },
         {
           "filters": {
-            "glassThikness": "8мм",
+            "thikness": "8",
             "nomenclatureType": "Скло сире"
           },
           "title": "8мм Float"
         },
         {
           "filters": {
-            "glassThikness": "8мм",
+            "thikness": "8",
             "nomenclatureType": "Скло сире"
           },
           "title": "8мм SunGuard HP Neutral 60/40 (Рязань)"
         },
         {
           "filters": {
-            "glassThikness": "8мм",
+            "thikness": "8",
             "nomenclatureType": "Триплекс заводський"
           },
           "title": "8мм триплекс 4.4.1"
         },
         {
           "filters": {
-            "glassThikness": "8мм",
+            "thikness": "8",
             "nomenclatureType": "Триплекс заводський"
           },
           "title": "8мм триплекс 4.4.1Е"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм Float"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм SunGuard HP Neutral 60/40 (Рязань)"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм ClimaGuard Premium T+ (Рязань)"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм SunGuard Neutral 80/58 HT"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм SunGuard SNX 50/23 HT"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм SGG Cool Lite SKN 176 II EasyPro"
         },
         {
           "filters": {
-            "glassThikness": "10мм",
+            "thikness": "10",
             "nomenclatureType": "Скло сире"
           },
           "title": "10мм SGG Cool Lite SKN 154 II EasyPro"
         },
         {
           "filters": {
-            "glassThikness": "12мм",
+            "thikness": "12",
             "nomenclatureType": "Скло сире"
           },
           "title": "12мм Float"
@@ -150,10 +151,65 @@
       ]
     },
     { 
+      "type": "select",
+      "name": "thermal",
+      "title": "Термообробка",
+      "order": 4,
+      "options":[
+        {"title": "<Виберіть значення зі списку>"},
+        {"title": "Гартування"},
+        {"title": "Гнуття"},
+        {"title": "Термозміцнення"}
+      ]
+    },
+    { 
       "type": "checkbox",
       "name": "heatSoakTest",
       "title": "HST",
-      "order": 4 
+      "order": 5 
+    }
+    ,
+    { 
+      "type": "select",
+      "name": "sanding",
+      "title": "Піскоструй",
+      "order": 6,
+      "options":[
+        {"title": "<Виберіть значення зі списку>"},
+        {"title": "Піскоструй звичайний"},
+        {"title": "Піскоструй художній тип 2"}
+      ],
+      "subParams": [
+        "glassSide"
+      ]
+    },
+    { 
+      "type": "select",
+      "name": "paint",
+      "title": "Фарбування",
+      "order": 7,
+      "options":[
+        {"title": "<Виберіть значення зі списку>"},
+        {"title": "Фотодрук"},
+        {"title": "Шовкографія"}
+      ],
+      "subParams":[
+        "glassSide",
+        "paintColor"
+      ]
+    },
+    { 
+      "type": "select",
+      "name": "kromra",
+      "title": "Обробка кромки",
+      "order": 8,
+      "options":[
+        {"title": "<Виберіть значення зі списку>"},
+        {"title": "Поліровка під кутом"},
+        {"title": "Поліровка"},
+        {"title": "Шліфовка DE"},
+        {"title": "Притуплення"}
+      ] 
     }
   ],
   "spacer":[
@@ -170,14 +226,15 @@
     },
     { 
       "type": "select",
-      "name": "spacerThikness",
+      "name": "thikness",
       "title": "Товщина",
+      "sufix": "мм",
       "filterOf": "spacerNomenclature",
       "order": 2 
     },
     { 
       "type": "select",
-      "name": "spacerType",
+      "name": "nomenclatureType",
       "title": "Тип рамки",
       "filterOf": "spacerNomenclature",
       "order": 3 
@@ -191,14 +248,14 @@
       "options": [
         {
           "filters": {
-            "spacerThikness": "6",
-            "spacerType": "Гнутєва рамка"
+            "thikness": "6",
+            "nomenclatureType": "Гнутєва рамка"
           },
           "title": "5,5 рамка гнутєва"
         },
         {
           "filters": {
-            "glassThikness": "8",
+            "thikness": "8",
             "nomenclatureType": "Тепла рамка"
           },
           "title": "8 Chromatech Hellgray RAL 7035"
@@ -206,14 +263,14 @@
         ,
         {
           "filters": {
-            "glassThikness": "10",
+            "thikness": "10",
             "nomenclatureType": "Тепла рамка"
           },
           "title": "10 Chromatech Black RAL 9004 "
         },
         {
           "filters": {
-            "glassThikness": "11",
+            "thikness": "11",
             "nomenclatureType": "Гнутєва рамка"
           },
           "title": "11,5 рамка гнутєва "
@@ -223,5 +280,28 @@
   ],
   "film": [
    
+  ],
+
+  "subParams": [
+    {
+      "name" : "glassSide",
+      "title": "Сторона",
+      "type": "select",
+      "options": [
+       {"title": "1 (Ліва)"},
+       {"title": "2 (Права)"} 
+      ]
+    },
+    {
+      "name" : "paintColor",
+      "title": "Колір фарби",
+      "type": "select",
+      "options": [
+       {"title": "Фарба RAL 9005 FERRO  Стасенко та Партнери"},
+       {"title": "Фарба RAL 9016 FERRO  Стасенко та Партнери"},
+       {"title": "Фарба RAL 7031 FERRO  Стасенко та Партнери"},
+       {"title": "Фарба RAL 7024 FERRO Стасенко та Партнери"} 
+      ]
+    }
   ]
 }

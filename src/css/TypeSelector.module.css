@@ -2,6 +2,13 @@
     width: 170px;
     height: 340px;
     padding: 0;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px;
+    transition: linear 100ms;
+}
+
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
 }
 
 .button{

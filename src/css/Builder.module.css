@@ -9,3 +9,19 @@
     display: flex;
     flex-direction: column;
 }
+
+.nav_bar{
+margin-bottom: 2px;
+}
+
+.nav_item{
+  font-size: large;
+  font-weight: 700;
+  padding: 0 5px;
+
+}
+
+.nav_item__active{
+    border:2px solid lightseagreen;
+    border-radius: 5px;
+}

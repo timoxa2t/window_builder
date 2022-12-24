@@ -23,10 +23,9 @@ export function TypeSelector({nextStep}){
         <Container>
             <Container className="row row-cols-auto">
                 {windowTypes.map(({name, img, id}, index) => 
-                    <Card className={style.card + " col m-4"} key={index}>
+                    <Card className={style.card + " col m-4"} key={index} onClick={() => setWindowType(id)}>
                         <Button className={style.button}
                             variant={checked === id ? "primary": "secondary"}
-                            onClick={() => setWindowType(id)}
                         >{name}
                         </Button>
                         <Image src={img} alt="window type" height="200"/>

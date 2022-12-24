@@ -17,7 +17,7 @@ export function Header(){
                     <img src={logo}/>
                 </Navbar.Brand>
                 <NavDropdown title="особистий кабінет" id="user-menu">
-                    <NavDropdown.Item href="#action/3.1">Профіль</NavDropdown.Item>
+                    <NavDropdown.Item href="/profile">Профіль</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Замовлення</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Вийти</NavDropdown.Item>

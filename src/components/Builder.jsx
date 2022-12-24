@@ -1,10 +1,11 @@
 
-import { Nav, Tab, Tabs } from "react-bootstrap";
+import { Nav, Tab } from "react-bootstrap";
 import { ObjectForm } from "./ObjectForm";
 import { PropertiesSelector } from "./Properties/PropertiesSelector";
 import { TypeSelector } from "./TypeSelector";
 import style from'../css/Builder.module.css';
 import { useState } from "react";
+import { AditionalPropsSelector } from "./AditionalPropsSelector";
 
 
 const OBJECT_FORM_PAGE = "OBJECT_FORM_PAGE"
@@ -16,31 +17,31 @@ const DELIVERY_INFO_PAGE = "DELIVERY_INFO_PAGE"
 const TABS = [
     {
         title: "Крок 1",
-        eventKey: "OBJECT_FORM_PAGE",
+        eventKey: OBJECT_FORM_PAGE,
         component: ObjectForm,
         paneStyle: ""
     },
     {
         title: "Крок 2",
-        eventKey: "TYPE_SELECTOR_PAGE",
+        eventKey: TYPE_SELECTOR_PAGE,
         component: TypeSelector,
         paneStyle: ""
     },
     {
         title: "Крок 3",
-        eventKey: "PROPERTIES_PAGE",
+        eventKey: PROPERTIES_PAGE,
         component: PropertiesSelector,
         paneStyle: style.tab
     },
     {
         title: "Крок 4",
-        eventKey: "SIZE_LIST_PAGE",
-        component: ObjectForm,
+        eventKey: SIZE_LIST_PAGE,
+        component: AditionalPropsSelector,
         paneStyle: ""
     },
     {
         title: "Крок 5",
-        eventKey: "DELIVERY_INFO_PAGE",
+        eventKey: DELIVERY_INFO_PAGE,
         component: ObjectForm,
         paneStyle: ""
     },
@@ -58,9 +59,12 @@ export function Builder(){
     return (
         <Tab.Container  defaultActiveKey="first" onSelect={(key) => setCurrentTab(key)}>
 
-            <Nav>
+            <Nav className={style.nav_bar}>
                 {TABS.map(({title, eventKey}) =>  
-                    <Nav.Item>
+                    <Nav.Item 
+                        key={eventKey} 
+                        className={style.nav_item + (eventKey === currentTab ? " " + style.nav_item__active: "")} 
+                        >
                         <Nav.Link eventKey={eventKey}>{title}</Nav.Link>
                     </Nav.Item>
                 )}
@@ -70,7 +74,7 @@ export function Builder(){
                 {TABS.map(({eventKey, component, paneStyle}) => { 
                         const SpecificComponent = component
                         return (
-                            <Tab.Pane eventKey={eventKey} className={paneStyle} active={eventKey === currentTab}>
+                            <Tab.Pane key={eventKey} eventKey={eventKey} className={paneStyle} active={eventKey === currentTab}>
                                 <SpecificComponent nextStep={nextStep}/>
                             </Tab.Pane>
                         )
@@ -79,45 +83,4 @@ export function Builder(){
             </Tab.Content>
         </Tab.Container>
     )
-    // return (
-    //     <Tab.Container  defaultActiveKey="first">
-
-    //         <Nav>
-    //             <Nav.Item>
-    //                 <Nav.Link eventKey={OBJECT_FORM_PAGE}>Крок 1</Nav.Link>
-    //             </Nav.Item>
-    //             <Nav.Item>
-    //                 <Nav.Link eventKey={TYPE_SELECTOR_PAGE}>Крок 2</Nav.Link>
-    //             </Nav.Item>
-    //             <Nav.Item>
-    //                 <Nav.Link eventKey={PROPERTIES_PAGE}>Крок 3</Nav.Link>
-    //             </Nav.Item>
-    //             <Nav.Item>
-    //                 <Nav.Link eventKey={SIZE_LIST_PAGE}>Крок 4</Nav.Link>
-    //             </Nav.Item>
-    //             <Nav.Item>
-    //                 <Nav.Link eventKey={DELIVERY_INFO_PAGE}>Крок 5</Nav.Link>
-    //             </Nav.Item>
-    //         </Nav>
-
-    //         <Tab.Content className={style.tab_container}>
-    //             <Tab.Pane eventKey={OBJECT_FORM_PAGE}>
-    //                 <ObjectForm/>
-    //             </Tab.Pane>
-    //             <Tab.Pane eventKey={TYPE_SELECTOR_PAGE}>
-    //                 <TypeSelector/>
-    //             </Tab.Pane>
-    //             <Tab.Pane eventKey={PROPERTIES_PAGE} className={style.tab}>
-    //                 <PropertiesSelector/>
-    //             </Tab.Pane>
-    //             <Tab.Pane eventKey={SIZE_LIST_PAGE}>
-
-    //             </Tab.Pane>
-    //             <Tab.Pane eventKey={DELIVERY_INFO_PAGE}>
-
-    //             </Tab.Pane>
-    //         </Tab.Content>
-    //     </Tab.Container>
-    // )
-
 }

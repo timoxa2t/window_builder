@@ -4,6 +4,9 @@ import { Header } from './components/Header';
 import { Body } from './components/Body';
 import { Route, Routes } from 'react-router-dom';
 import { Builder } from './components/Builder';
+import { Main } from './components/Main';
+import { Profile } from './components/Profile';
+
 
 function App() {
   return (
@@ -11,9 +14,10 @@ function App() {
       <Header/>
       <Body>
         <Routes >
-            <Route path="/" element={<h1>Empty</h1>}/>
+            <Route path="/" element={<Main/>}/>
             <Route path="/builder" element={<Builder/>}/>
-            <Route path="/details/:barcode" element={<BarcodeInfo />} />           
+            <Route path="/details/:barcode" element={<BarcodeInfo />} />   
+            <Route path="/profile" element={<Profile/>}/>        
         </Routes >
       </Body>
 

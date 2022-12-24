@@ -1,50 +1,73 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { PropertyFormElement } from "./PropertyFormElement";
 
-const GLASS = "type_glass"
-const SPACER = "type_spacer"
-const FILM = "type_film"
-
-
-
-
-export function PropertiesForm({properties}){
-
-    const [selectedProps, setSelectedProps] = useState(properties.map(item => (
+function getSelected(properties){
+    return properties.map(item => (
         {
             name: item.name,
             value: item.hasOwnProperty("options") ? item.options[0]?.title: item.value
         }
     ))
-    )
+}
+function setValues(props, values){
+    return props.map(item => {
+        const newItem = {...item}
+        newItem.value = values.find(({name}) => item.name === name).value
+        return newItem
+    })
+}
 
-    const filterProps = () => {
-       
-        const propsWithValues = properties.map(item => {
-            const newItem = {...item}
-            newItem.value = selectedProps.find(({name}) => item.name === name).value
-            return newItem
+export function PropertiesForm({properties, changeThickness, nextStep}){
+    const [selectedProps, setSelectedProps] = useState(getSelected(properties))
+
+    const filteredProps = useMemo(() => {
+        const propsWithValues = setValues(properties, selectedProps)
+
+        const mapedFilters = propsWithValues.reduce((acc, item) => {
+            if(item.hasOwnProperty("filterOf")){
+                let arr = []
+                if(acc.has(item.filterOf)){
+                    arr = acc.get(item.filterOf)
+                }
+                arr.push({...item})
+                acc.set(item.filterOf, arr)
+            }
+            return acc
+        }, new Map())
+
+        mapedFilters.forEach((filters, key) => {
+            const prop = propsWithValues.find(({name}) => name === key)
+            let options = [...prop.options]
+
+            filters.map(filter => {        
+                const filterValues = getFilterValues(options, filter)
+                const filterObj = propsWithValues.find(({name, filterOf}) => key === filterOf && name === filter.name)
+                filterObj.options = [...filterValues]
+                if(filterObj.options.length > 0 && !filterObj.options.some(item => item === filterObj.value)){
+                    filterObj.value = filterObj.options[0]
+                }
+                options = options.filter(item => item.filters[filter.name] === filter.value)
+            })
+            
         })
 
         return propsWithValues.map((item) => 
         {
-            if(item.hasOwnProperty("options") ){                
-                item.options = item.options.filter(({filters}) => {
+            const newItem = {...item}
+            if(item.hasOwnProperty("options") ){                          
+                newItem.options = item.options.filter(({filters}) => {
                     const filterBy = propsWithValues.filter(({filterOf}) => filterOf === item.name) 
                     if(!filterBy) return true
                     return filterBy.reduce((acc, {name, value}) => {
                         return acc && filters[name] === value
                     }, true)
                 })
-            }
-            return item
+            }  
+            return newItem
         })
-    }
-
-    const [filteredProps, setFilteredProps] = useState(filterProps())
-
+    }, [selectedProps, properties])
 
     const checkFilters = (key, value) => {
         setSelectedProps(selectedProps.map(item => 
@@ -57,18 +80,46 @@ export function PropertiesForm({properties}){
         )
     }
 
-    useEffect(() => {
-        setFilteredProps(filterProps())
-    }, selectedProps)
+
+    const getHandler = (name) => {
+
+        switch(name){
+            case "thikness": 
+                return changeThickness
+            default: 
+                return () => {}
+        }
+    }
+
+    const onSubmit = (event) => {
+        event.preventDefault()
+        nextStep()
+    }
 
     return (
-        <Form>
-            {filteredProps.map(({type, name, title, options, value}) => 
-                <PropertyFormElement key={name} type={type} name={name} title={title} options={options} value={value} checkFilters={checkFilters}/>  
+        <Form onSubmit={onSubmit}>
+            {filteredProps.map(props =>
+                <PropertyFormElement 
+                    props = {props}
+                    key={props.name} 
+                    checkFilters={checkFilters} 
+                    handler={getHandler(props.name)}/>  
             )}
+
+            <Button variant="primary" type="submit">
+                Перейти до наступного кроку
+            </Button>
              
         </Form>
       
     )
+
+    
 }
 
+function getFilterValues(options, filter){
+    return options.reduce((acc, item) => {
+        acc.add(item.filters[filter.name])
+        return acc
+    }, new Set())
+}

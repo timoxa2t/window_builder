@@ -1,7 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
-  currentUser,
-  registerNewUser,
   setType
 } from "./actions";
 
@@ -10,11 +8,8 @@ import triplex from "../../img/triplex.png";
 import odnosklo from "../../img/odnosklo.png";
 import dvosklo from "../../img/dvosklo.png";
 import trysklo from "../../img/trysklo.png";
+import { FILM, GLASS, SPACER } from "../../utilities";
 
-
-const GLASS = "type_glass";
-const SPACER = "type_spacer";
-const FILM = "type_film";
 
 const defaultState = {
   windowTypes: [
@@ -63,14 +58,6 @@ export const glassReducer = createReducer(
     [setType]: (state, { payload }) => {
       const selected = state.windowTypes.find(type => type.id === payload)
       state.selectedType = selected;
-    },
-    [registerNewUser.fulfilled]: (state, { payload }) => {
-      state.name = payload.user.name;
-      state.email = payload.user.email;
-      state.token = payload.token;
-    },
-    [currentUser.fulfilled]: (state, { payload }) => {
-      state = payload;
     },
   }
 );
