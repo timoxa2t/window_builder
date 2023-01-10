@@ -1,5 +1,5 @@
-import { FieldArray, Form, Formik, useField } from "formik";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { FieldArray,  Formik, useField } from "formik";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import { FormikFieldComponent } from "./FormikFieldComponent";
 import style from "../css/AditionalPropsSelector.module.css"
@@ -35,6 +35,11 @@ export function AditionalPropsSelector({nextStep}) {
     { ...keyColumn('comment', textColumn), title: 'Коментар' },
   ]
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    nextStep()
+  }
+
   return (
     <Container>
       <DataSheetGrid
@@ -42,6 +47,17 @@ export function AditionalPropsSelector({nextStep}) {
         onChange={setData}
         columns={columns}
       />
+
+      <Form onSubmit={handleSubmit}>
+
+        <Form.Group controlId="formFile" className="mb-3">
+          <Form.Label>Прикріпіть файли</Form.Label>
+          <Form.Control type="file" multiple />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+            Перейти до наступного кроку
+        </Button>
+      </Form>
  
   
       {/* <Formik
