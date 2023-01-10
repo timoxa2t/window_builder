@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDeleteLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { DataSheetGrid, intColumn, keyColumn, textColumn } from "react-datasheet-grid";
+import 'react-datasheet-grid/dist/style.css'
+import { useState } from "react";
 
 export function AditionalPropsSelector({nextStep}) {
   const initialValues = {
@@ -15,15 +18,33 @@ export function AditionalPropsSelector({nextStep}) {
         width: 10,
         height: 10,
         count: 1,
-        remove: false
+        comment: ""
       },
     ],
   };
 
+  const [ data, setData ] = useState([
+    { width: 10, height: 10, count: 1, comment: '' },
+    { width: null, height: null, count: null, comment: '' },
+  ])
+
+  const columns = [
+    { ...keyColumn('width', intColumn), title: 'Ширина' },
+    { ...keyColumn('height', intColumn), title: 'Висота' },
+    { ...keyColumn('count', intColumn), title: 'Кількість' },
+    { ...keyColumn('comment', textColumn), title: 'Коментар' },
+  ]
+
   return (
     <Container>
-
-      <Formik
+      <DataSheetGrid
+        value={data}
+        onChange={setData}
+        columns={columns}
+      />
+ 
+  
+      {/* <Formik
         initialValues={initialValues}
         validationSchema={Yup.object({
           width: Yup.number()
@@ -47,9 +68,11 @@ export function AditionalPropsSelector({nextStep}) {
             <FieldArray name="positions">
               {({ insert, remove, push }) => (
               <div>
+
                 {values.positions.length > 0 &&
                   values.positions.map((position, index) => (
               
+                    
                 <Row key={index} className={style.position + (position.remove ? " " + style.position__remove: "")}>
                     <FormikFieldComponent name={`positions.${index}.width`} title="Ширина, мм" type="number" />
                     <FormikFieldComponent name={`positions.${index}.height`} title="Висота, мм" type="number" />
@@ -71,7 +94,7 @@ export function AditionalPropsSelector({nextStep}) {
           </Form>
         )}
         
-      </Formik>
+      </Formik> */}
     </Container>
   );
 }
@@ -88,7 +111,7 @@ function RemoveButton({remove, index, ...props}){
         variant="secondary"
         className={style.btn_delete} 
         onClick={() => {                 
-          remove(index)
+          remove(index) 
         }}>
           <FontAwesomeIcon icon={faDeleteLeft} size="lg" className={style.icon}/>
       </Button>
